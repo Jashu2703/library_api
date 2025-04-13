@@ -1,4 +1,9 @@
-
+COMPANY: CODTECH IT SOLUTIONS
+NAME: JASHWANTH VALASA 
+INTERN ID: CT08WR03 
+DOMAIN: SOFTWARE DEVELOPMENT
+DURATION: 8 WEEEKS 
+MENTOR: NEELA SANTOSH
 # Library API
 
 This is a simple RESTful API for managing books in a library. It allows you to perform CRUD operations like adding, retrieving, updating, and deleting books.
