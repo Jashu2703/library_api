@@ -2,23 +2,20 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-# In-memory database substitute
 books = [
     {"id": 1, "title": "The Alchemist", "author": "Paulo Coelho", "year": 1988},
     {"id": 2, "title": "1984", "author": "George Orwell", "year": 1949}
 ]
 
-# Home route
 @app.route('/')
 def index():
     return jsonify({"message": "Welcome to the Library API"}), 200
 
-# Get all books
+
 @app.route('/books', methods=['GET'])
 def get_books():
     return jsonify(books), 200
 
-# Get single book by ID
 @app.route('/books/<int:book_id>', methods=['GET'])
 def get_book(book_id):
     book = next((b for b in books if b["id"] == book_id), None)
@@ -26,7 +23,6 @@ def get_book(book_id):
         return jsonify(book), 200
     return jsonify({"message": "Book not found"}), 404
 
-# Add a new book
 @app.route('/books', methods=['POST'])
 def add_book():
     new_book = request.get_json()
@@ -34,7 +30,6 @@ def add_book():
     books.append(new_book)
     return jsonify(new_book), 201
 
-# Update a book
 @app.route('/books/<int:book_id>', methods=['PUT'])
 def update_book(book_id):
     book = next((b for b in books if b["id"] == book_id), None)
@@ -44,7 +39,6 @@ def update_book(book_id):
     book.update(data)
     return jsonify(book), 200
 
-# Delete a book
 @app.route('/books/<int:book_id>', methods=['DELETE'])
 def delete_book(book_id):
     global books
